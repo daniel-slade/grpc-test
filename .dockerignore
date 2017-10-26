@@ -1,0 +1,4 @@
+.dockerignore
+.DS_Store
+node_modules
+logs

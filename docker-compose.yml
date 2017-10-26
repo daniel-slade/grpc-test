@@ -1,0 +1,34 @@
+version: '3.3'
+services:
+  pingserver:
+    image: grpc-test-server:latest
+    deploy:
+      endpoint_mode: dnsrr
+      replicas: 0
+      resources:
+        limits:
+          memory: 100M
+    environment:
+      GRPC_TRACE: all
+#      GRPC_VERBOSITY: debug
+#      GRPC_VERBOSITY: info
+      GRPC_VERBOSITY: error
+  pingclient:
+    image: grpc-test-client:latest
+    deploy:
+      replicas: 0
+      resources:
+        limits:
+          memory: 100M
+    environment:
+      GRPC_TRACE: all
+#      GRPC_VERBOSITY: debug
+#      GRPC_VERBOSITY: info
+      GRPC_VERBOSITY: error
+  nonserver:
+    image: grpc-test-nonserver:latest
+    deploy:
+      replicas: 0
+      resources:
+        limits:
+          memory: 100M

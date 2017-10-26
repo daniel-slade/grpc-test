@@ -1,0 +1,15 @@
+{
+  "name": "grpc-test",
+  "version": "1.0.0",
+  "description": "Test for gRPC dnsrr problems",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "docker build -t grpc-test-server -f Dockerfile.server . && docker build -t grpc-test-client -f Dockerfile.client . && docker build -t grpc-test-nonserver -f Dockerfile.nonserver ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "grpc": "^1.7.0-pre1"
+  }
+}

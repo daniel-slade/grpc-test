@@ -1,0 +1,23 @@
+#FROM node:6.10.0-alpine
+FROM node:6.10.0
+
+ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
+RUN chmod +x /usr/local/bin/dumb-init
+
+#RUN apk add --no-cache libc6-compat
+#RUN adduser -D app
+
+ENV NODE_ENV production
+
+RUN mkdir -p /var/app
+WORKDIR /var/app
+
+COPY package.json /var/app/
+RUN npm install --production
+COPY server.js /var/app
+COPY ping.proto /var/app
+
+#USER app
+
+ENTRYPOINT ["dumb-init"]
+CMD ["node", "server.js"]

@@ -1,0 +1,15 @@
+syntax = "proto3";
+package grpctest;
+
+service PingService {
+  rpc Ping (PingRequest) returns (PingResponse) {}
+}
+
+message PingRequest {
+  string pingFrom = 1;
+  int32 pingNumber = 2;
+}
+
+message PingResponse {
+  string message = 1;
+}
